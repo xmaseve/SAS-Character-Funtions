@@ -1,0 +1,17 @@
+data one;
+	input string $ 1-5;
+datalines;
+12345
+8 642
+;
+data two;
+	set one;
+	array x[5] x1-x5;
+	do i = 1 to 5;
+		x[i] = input(substr(string, i, 1), 1.);
+	end;
+	drop i;
+run;
+
+proc print data=two;
+run;
