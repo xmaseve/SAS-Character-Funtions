@@ -1,0 +1,15 @@
+data parse;
+  input longstring $ 1-80;
+  array words{*} $ 10 word1 - word2;
+  do i = 1 to dim(words);
+    words{i} = scan(longstring, i, ',.! ');
+  end;
+  drop longstring i;
+datalines;
+this line, contains! five.words
+the second line abc xyz
+;
+run;
+
+
+  
